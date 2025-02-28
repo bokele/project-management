@@ -19,7 +19,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('created_by')->nullable();
             $table->string('hashid')->nullable()->index();
-            $table->foreignIdFor(Project::class)->constrained();
+            $table->foreignIdFor(Project::class);
             $table->foreignIdFor(projectPipelineStage::class)->nullable()->constrained();
             $table->foreignIdFor(User::class)->nullable()->constrained();
             $table->text('notes')->nullable();

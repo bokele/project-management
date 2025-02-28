@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('created_by')->nullable();
             $table->string('hashid')->nullable()->index();
-            $table->foreignIdFor(PipelineStage::class)->nullable()->constrained();
+            $table->foreignIdFor(PipelineStage::class)->nullable();
             $table->string('code')->unique()->index();
             $table->string('type')->default('person'); //person company
             $table->string('name')->nullable()->index();

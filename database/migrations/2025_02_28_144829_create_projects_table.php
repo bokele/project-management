@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('created_by')->nullable();
             $table->string('hashid')->nullable()->index();
             $table->foreignIdFor(Customer::class)->nullable()->constrained();
-            $table->foreignId('marger_id')->nullable()->constrained();
+            $table->foreignId('marger_id')->nullable();
             $table->string('code')->unique()->index();
             $table->string('name')->index();
             $table->integer('priority');
