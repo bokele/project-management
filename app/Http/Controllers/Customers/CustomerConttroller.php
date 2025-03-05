@@ -6,7 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCustomerRequest;
 use App\Http\Requests\UpdateCustomerRequest;
 use App\Models\Customer;
+use App\Models\CustomerPipelineStage;
+use App\Models\LeadSource;
+use App\Models\PipelineStage;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
+use Spatie\Permission\Models\Role;
 
 class CustomerConttroller extends Controller
 {
@@ -16,6 +21,8 @@ class CustomerConttroller extends Controller
     public function index()
     {
         $customers = Customer::latest()->paginate(100);
+
+        // dd($customers);
         return view('customers.index', compact('customers'));
     }
 
@@ -24,7 +31,12 @@ class CustomerConttroller extends Controller
      */
     public function create()
     {
-        return view('customers.create');
+
+        $employees = User::pluck('name', 'id');
+        $leadSources = LeadSource::pluck('name', 'id');
+        $pipelineStages = PipelineStage::pluck('name', 'id');
+
+        return view('customers.create', compact('employees', 'leadSources', 'pipelineStages'));
     }
 
     /**
@@ -46,7 +58,7 @@ class CustomerConttroller extends Controller
      */
     public function show(Customer $customer)
     {
-        //
+        return view('customers.show', compact('customer'));
     }
 
     /**
@@ -54,7 +66,11 @@ class CustomerConttroller extends Controller
      */
     public function edit(Customer $customer)
     {
-        //
+        $employees = User::pluck('name', 'id');
+        $leadSources = LeadSource::pluck('name', 'id');
+        $pipelineStages = PipelineStage::pluck('name', 'id');
+
+        return view('customers.edit', compact('customer', 'employees', 'leadSources', 'pipelineStages'));
     }
 
     /**
@@ -62,7 +78,10 @@ class CustomerConttroller extends Controller
      */
     public function update(UpdateCustomerRequest $request, Customer $customer)
     {
-        //
+        $customer->update($request->validated());
+
+        return redirect()->route('customers.show', $customer)
+            ->with('message', __('Customer created successfully'));
     }
 
     /**

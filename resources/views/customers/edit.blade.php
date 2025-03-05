@@ -14,39 +14,44 @@
         {{-- </x-slot> --}}
 
 
-        <form method="POST" action="{{ route('customers.store') }}">
+        <form method="POST" action="{{ route('customers.update', $customer->hashid) }}">
             @csrf
+            @method('PUT')
+
             <x-card class='mb-4'>
                 <div>
                     <x-label for='user_id' required="true">Employee</x-label>
                     <x-select id="user_id" autocomplete="type" placeholder='Customer Name' name='user_id'>
 
                         @foreach ($employees as $key => $employee)
-                            <option value='{{ $key }}'>{{ $employee }}</option>
+                            <option value='{{ $key }}' @selected($key == $customer->user_id)>{{ $employee }}
+                            </option>
                         @endforeach
 
                     </x-select>
                     <x-input-error for='type' />
                 </div>
             </x-card>
-            <x-card>
 
+            <x-card>
                 <div class="grid gap-4">
                     <!-- Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         <div>
                             <x-label for='type' required="true">Type</x-label>
                             <x-select id="type" autocomplete="type" placeholder='Customer Name' name='type'>
-                                <option value='person'>Person</option>
-                                <option value='company'>Company</option>
+
+                                @foreach (config('uvapm.customer_type') as $key => $type)
+                                    <option value='{{ $key }}' @selected($key == $customer->type)>{{ $type }}
+                                    </option>
+                                @endforeach
                             </x-select>
                             <x-input-error for='type' />
                         </div>
-                        <div class="md:col-span-2 lg:col-span-2">
+                        <div>
                             <x-label for='name' required="true">Name</x-label>
                             <x-input id="name" type="text" autocomplete="name" placeholder='Customer Name'
-                                name='name' value="{{ old('name') }}"
+                                name='name' value="{{ $customer->name }}"
                                 class="@error('name') border-red-500  @enderror" />
                             <x-input-error for='name' />
                         </div>
@@ -55,14 +60,14 @@
                             <x-label for='email' required="true">
                                 Email</x-label>
                             <x-input id="email" type="email" autocomplete="email" placeholder='Customer Email'
-                                value="{{ old('email') }}" name='email'
+                                value="{{ $customer->email }}" name='email'
                                 class="@error('email') border-red-500  @enderror" />
                             <x-input-error for='email' />
                         </div>
                         <div>
                             <x-label for='phone_number' required="true">Phone Number</x-label>
                             <x-input id="phone_number" type="tel" autocomplete="phone_number"
-                                placeholder='Customer Phone Number' value="{{ old('phone_number') }}"
+                                placeholder='Customer Phone Number' value="{{ $customer->phone_number }}"
                                 name='phone_number' class="@error('phone_number') border-red-500  @enderror" />
                             <x-input-error for='phone_number' />
                         </div>
@@ -70,7 +75,7 @@
                         <div>
                             <x-label for='industry' required="true"> Industry</x-label>
                             <x-input id="industry" type="text" autocomplete="industry"
-                                placeholder='Customer Industry' value="{{ old('industry') }}" name='industry'
+                                placeholder='Customer Industry' value="{{ $customer->industry }}" name='industry'
                                 class="@error('industry') border-red-500  @enderror" />
                             <x-input-error for='industry' />
                         </div>
@@ -82,20 +87,18 @@
                     <div>
                         <x-label for='address' required="true"> Address</x-label>
                         <x-input id="address" type="text" autocomplete="address" placeholder='Customer Address'
-                            value="{{ old('address') }}" name='address'
+                            value="{{ $customer->address }}" name='address'
                             class="@error('address') border-red-500  @enderror" />
                         <x-input-error for='address' />
                     </div>
                     <div>
                         <x-label for='description'> Description</x-label>
                         <x-textarea id="description" autocomplete="description" placeholder='Customer Description'
-                            name='description'>{{ old('description') }}</x-textarea>
+                            name='description'>{{ $customer->description }}</x-textarea>
                         <x-input-error for='description' />
                     </div>
 
             </x-card>
-
-
             <x-card>
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
 
@@ -104,17 +107,19 @@
                         <x-select id="lead_source_id" autocomplete="lead_source_id" placeholder='lead Source'
                             name='lead_source_id'>
                             @foreach ($leadSources as $key => $leadSource)
-                                <option value='{{ $key }}'>{{ $leadSource }}</option>
+                                <option value='{{ $key }}' @selected($key == $customer->lead_source_id)>{{ $leadSource }}
+                                </option>
                             @endforeach
                         </x-select>
                         <x-input-error for='type' />
                     </div>
                     <div>
-                        <x-label for='pipeline_stage_id' required="true">Type</x-label>
+                        <x-label for='pipeline_stage_id' required="true">Pipeline Stage</x-label>
                         <x-select id="pipeline_stage_id" autocomplete="pipeline_stage_id" placeholder='Pipeline Stage '
                             name='pipeline_stage_id'>
                             @foreach ($pipelineStages as $key => $pipelineStage)
-                                <option value='{{ $key }}'>{{ $pipelineStage }}</option>
+                                <option value='{{ $key }}' @selected($key == $customer->pipeline_stage_id)>{{ $pipelineStage }}
+                                </option>
                             @endforeach
                         </x-select>
                         <x-input-error for='type' />
@@ -144,7 +149,6 @@
 
             </div>
             <!-- End Grid -->
-
         </form>
 
 </x-layouts.app>

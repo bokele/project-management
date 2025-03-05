@@ -11,7 +11,7 @@ class UpdateCustomerRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -21,8 +21,17 @@ class UpdateCustomerRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
-            //
+        return  [
+            'type' => ['required'],
+            'name' => ['required', 'string', 'max:200'],
+            'email' => ['required', 'email'],
+            'phone_number' => ['required'],
+            'industry' => ['required'],
+            'address' => ['required'],
+            'description' => ['nullable'],
+            'lead_source_id' => ['nullable'],
+            'pipeline_stage_id' => ['nullable'],
+
         ];
     }
 }

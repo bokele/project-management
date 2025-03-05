@@ -22,6 +22,7 @@ class StoreCustomerRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'user_id' => ['required'],
             'type' => ['required'],
             'name' => ['required', 'string', 'max:200'],
             'email' => ['required', 'email'],
@@ -29,6 +30,8 @@ class StoreCustomerRequest extends FormRequest
             'industry' => ['required'],
             'address' => ['required'],
             'description' => ['nullable'],
+            'lead_source_id' => ['nullable'],
+            'pipeline_stage_id' => ['nullable'],
         ];
     }
 }
