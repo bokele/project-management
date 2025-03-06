@@ -24,19 +24,17 @@
                         </div>
                     </div>
                 </div>
-                <div class="bg-white  border overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="mt-auto flex border-b border-gray-200  dark:border-neutral-700 dark:divide-neutral-700">
+                <x-card class="  border shadow-sm sm:rounded-lg">
+                    <div class="mt-auto flex  border-gray-200  dark:border-neutral-700 dark:divide-neutral-500">
                         <span
-                            class="w-full py-3 px-4  gap-x-2 text-md font-medium rounded-es-xl bg-white text-gray-800 shadow-2xs   dark:bg-neutral-900 dark:border-neutral-700 dark:text-white ">
+                            class="w-full py-3 px-4  gap-x-2 text-md font-medium rounded-es-xl  text-gray-800 shadow-2xs    dark:text-white ">
                             Personal Information
                         </span>
 
                     </div>
-                    <div class="overflow-hidden overflow-x-auto p-6 bg-white border-b border-gray-200">
+                    <div class="overflow-hidden overflow-x-auto p-6 dark:bg-neutral-800    ">
 
                         <div class="min-w-full align-middle">
-
-
                             <div class="grid gap-4">
                                 <!-- Grid -->
                                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -144,7 +142,7 @@
 
                         </div>
                     </div>
-                </div>
+                </x-card>
                 <div class="bg-white  border overflow-hidden shadow-sm sm:rounded-lg mt-4">
                     <div class="mt-auto flex border-b border-gray-200  dark:border-neutral-700 dark:divide-neutral-700">
                         <span

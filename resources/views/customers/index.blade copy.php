@@ -1,11 +1,16 @@
 <x-layouts.app>
     <x-slot name="header">
+        <div class="flex justify-between">
 
+
+
+
+        </div>
         <div class="py-12">
             <x-alert-message />
             <div class="max-w-8xl mx-auto sm:px-6 lg:px-8">
-                <div class="bg-white dark:bg-neutral-800 overflow-hidden shadow-sm sm:rounded-lg">
-                    <div class="overflow-hidden overflow-x-auto p-6 bg-white dark:bg-neutral-800 ">
+                <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
+                    <div class="overflow-hidden overflow-x-auto p-6 bg-white border-b border-gray-200">
                         <div class="min-w-full align-middle">
                             <div class="px-6 py-4 grid gap-3 md:flex md:justify-between md:items-center ">
                                 <div>
@@ -22,72 +27,72 @@
                             </div>
 
 
-                            <table class="min-w-full divide-y divide-gray-200 dark:divide-neutral-700  border dark:border-neutral-700 mt-4">
+                            <table class="min-w-full divide-y divide-gray-200 border mt-4">
                                 <thead>
                                     <tr>
-                                        <th class="px-6 py-3  dark:divide-neutral-700  text-left">
+                                        <th class="px-6 py-3 bg-gray-50 text-left">
                                             <span
-                                                class="text-xs leading-4 font-semibold text-gray-500 dark:text-gray-200  uppercase tracking-wider ">{{ __('N') }}</span>
+                                                class="text-xs leading-4 font-semibold text-gray-900 uppercase tracking-wider ">{{ __('N') }}</span>
                                         </th>
-                                        <th class="px-6 py-3  dark:divide-neutral-700  text-left">
+                                        <th class="px-6 py-3 bg-gray-50 text-left">
                                             <span
-                                                class="text-xs leading-4 font-semibold text-gray-500 dark:text-gray-200  uppercase tracking-wider">{{ __('Code') }}</span>
+                                                class="text-xs leading-4 font-semibold text-gray-900 uppercase tracking-wider">{{ __('Code') }}</span>
                                         </th>
-                                        <th class="px-6 py-3  dark:divide-neutral-700  text-left">
+                                        <th class="px-6 py-3 bg-gray-50 text-left">
                                             <span
-                                                class="text-xs leading-4 font-semibold text-gray-500 dark:text-gray-200 uppercase tracking-wider">{{ __('Name') }}</span>
+                                                class="text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">{{ __('Name') }}</span>
                                         </th>
-                                        <th class="px-6 py-3  dark:divide-neutral-700  text-left">
+                                        <th class="px-6 py-3 bg-gray-50 text-left">
                                             <span
-                                                class="text-xs leading-4 font-semibold text-gray-500 dark:text-gray-200 uppercase tracking-wider">{{ __('Email') }}</span>
+                                                class="text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">{{ __('Email') }}</span>
                                         </th>
-                                        <th class="px-6 py-3  dark:divide-neutral-700  text-left">
+                                        <th class="px-6 py-3 bg-gray-50 text-left">
                                             <span
-                                                class="text-xs leading-4 font-semibold text-gray-500 dark:text-gray-200 uppercase tracking-wider">{{ __('Phone Number') }}</span>
+                                                class="text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">{{ __('Phone Number') }}</span>
                                         </th>
-                                        <th class="px-6 py-3  dark:divide-neutral-700  text-left">
+                                        <th class="px-6 py-3 bg-gray-50 text-left">
                                             <span
-                                                class="text-xs leading-4 font-semibold text-gray-500 dark:text-gray-200 uppercase tracking-wider">{{ __('Lead source') }}</span>
+                                                class="text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">{{ __('Lead source') }}</span>
                                         </th>
-                                        <th class="px-6 py-3  dark:divide-neutral-700  text-left">
+                                        <th class="px-6 py-3 bg-gray-50 text-left">
                                             <span
-                                                class="text-xs leading-4 font-semibold text-gray-500 dark:text-gray-200 uppercase tracking-wider">{{ __('Pipeline stage') }}</span>
+                                                class="text-xs leading-4 font-semibold text-gray-500 uppercase tracking-wider">{{ __('Pipeline stage') }}</span>
                                         </th>
-                                        <th class="px-6 py-3  dark:divide-neutral-700 ">
+                                        <th class="px-6 py-3 bg-gray-50">
 
                                         </th>
                                     </tr>
                                 </thead>
 
-                                <tbody class=" divide-y divide-gray-200 dark:divide-neutral-700 divide-solid">
+                                <tbody class="bg-white divide-y divide-gray-200 divide-solid">
 
 
 
                                     @forelse ($customers as $customer)
-                                        <tr class="">
-                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 dark:text-gray-200">
+                                        <tr class="bg-white">
+                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                                 {{ $loop->iteration }}
                                             </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 dark:text-gray-200">
+                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                                 {{ $customer->code }}
                                             </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 dark:text-gray-200">
+                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                                 {{ $customer->name }}
                                             </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 dark:text-gray-200">
+                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                                 {{ $customer->email }}
                                             </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 dark:text-gray-200">
+                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                                 {{ $customer->phone_number }}
                                             </td>
 
-                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 dark:text-gray-200">
+                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                                 {{ $customer?->leadSource?->name }}
                                             </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 dark:text-gray-200">
+                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                                 {{ $customer?->pipelineStage?->name }}
                                             </td>
-                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 dark:text-gray-200">
+                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900">
                                                 <x-link-button
                                                     href="{{ route('customers.show', $customer->hashid) }}">{{ __('View') }}</x-link-button>
                                                 <x-link-button
@@ -149,7 +154,7 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900 dark:text-gray-200"
+                                            <td class="px-6 py-4 whitespace-no-wrap text-sm leading-5 text-gray-900"
                                                 colspan='7'>
                                                 <span>NO DATA</span>
                                             </td>

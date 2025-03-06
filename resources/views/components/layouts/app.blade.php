@@ -1,7 +1,3 @@
 <x-layouts.app.sidebar>
-
-    <flux:main>
-
-        {{ $slot }}
-    </flux:main>
+    {{ $slot }}
 </x-layouts.app.sidebar>
